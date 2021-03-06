@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import home, profile, BookLoginView, BookLogoutView, ChangeUserInfoView, BookChangePasswordView, \
-    RegisterUserView, RegisterDone, BookDeleteView
+    RegisterUserView, RegisterDone, BookDeleteView, CreateArticle
 
 app_name = 'library'
 
@@ -14,4 +14,6 @@ urlpatterns = [
     path('accounts/register/done/', RegisterDone.as_view(), name='register_done'),
     path('accounts/register/', RegisterUserView.as_view(), name='register_user'),
     path('account/profile/delete/', BookDeleteView.as_view(), name='delete_user'),
+    path('create-article/', CreateArticle.as_view(), name='create_article'),
+    path('article/', ListArticle.as_view(), name='list_article'),
 ]

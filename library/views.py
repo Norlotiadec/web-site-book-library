@@ -8,7 +8,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.base import TemplateView
-from .models import AdvUser
+from django.views.generic.list import ListView
+from .models import AdvUser, Article, Comment
 from .forms import ChangeUserInfoForm, RegisterUserForm
 
 
@@ -85,3 +86,16 @@ class BookDeleteView(LoginRequiredMixin, DeleteView):
         if not queryset:
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
+
+
+# Написать View для написания и сохранения статьей
+
+class CreateArticle(CreateView):
+    model = Article
+    fields = ['title', 'content']
+    success_url = reverse_lazy('library:home')
+    template_name = 'main/create_article.html'
+
+
+def 
+

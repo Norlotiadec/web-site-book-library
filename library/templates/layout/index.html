@@ -30,7 +30,7 @@
 							<li><a class="dr-icon dr-icon-user" href="/">Home</a></li>
 							{% if user.is_authenticated %}
 							<li><a class="dr-icon dr-icon-user" href="{% url 'library:profile' %}">{{ user.username }}</a></li>
-							<li><a class="dr-icon dr-icon-camera" href="#">Videos</a></li>
+							<li><a class="dr-icon dr-icon-camera" href="{% url 'library:list_article' %}">Статьи</a></li>
 							<li><a class="dr-icon dr-icon-heart" href="#">Favorites</a></li>
 							<li><a class="dr-icon dr-icon-bullhorn" href="#">Subscriptions</a></li>
 							<li><a class="dr-icon dr-icon-download" href="#">Downloads</a></li>

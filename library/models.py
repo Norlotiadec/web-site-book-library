@@ -10,8 +10,18 @@ class AdvUser(AbstractUser):
         pass
 
 
-class Rubric(models.Model):
+class Article(models.Model):
+    title = models.CharField(max_length=100, db_index=True, verbose_name='Заголовок')
+    content = models.TextField(verbose_name='Описание', help_text='Напишите что-то...')
+    pub_date = models.DateTimeField(verbose_name='Дата публикации', auto_now_add=True)
+
+
+class Comment(models.Model):
     name = models.CharField(max_length=20, db_index=True, verbose_name='Название')
-    order = models.SmallIntegerField(db_index=True, verbose_name='Порядок')
-    super_rubric = models.ForeignKey('SuperRubric', on_delete=models.PROTECT, null=True, blank=True,
-                                     verbose_name='Надрубрика')
+    comment = models.CharField(max_length=250, help_text='Напишите короткий коментарий', verbose_name='Коментарий')
+    article = models.ForeignKey('Article', on_delete=models.CASCADE, null=True, blank=True,
+                                verbose_name='статья')
+
+    class Meta:
+        verbose_name = 'Рубрика'
+        verbose_name_plural = 'Рубрики'
